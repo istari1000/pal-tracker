@@ -22,7 +22,6 @@ public class TimeEntryController
     {
         TimeEntry returnTimeEntry = timeEntryRepository.create(timeEntry);
         return ResponseEntity.created(null).body(returnTimeEntry);
-        //return new ResponseEntity<>(returnTimeEntry, HttpStatus.CREATED);
     }
     @GetMapping("/time-entries/{id}")
     public ResponseEntity<TimeEntry> read(@PathVariable long id)
@@ -43,7 +42,6 @@ public class TimeEntryController
         return Optional.ofNullable(timeEntryRepository.update(id, timeEntry))
                 .map((returnTimeEntry -> ResponseEntity.ok().body(returnTimeEntry)))
                 .orElseGet(()->ResponseEntity.notFound().build());
-        //return ResponseEntity.ok(returnTimeEntry);
     }
     @DeleteMapping("/time-entries/{id}")
     public ResponseEntity<Void> delete(@PathVariable long id)
